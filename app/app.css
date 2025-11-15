@@ -1,27 +1,34 @@
 /** biome-ignore-all lint/correctness/noUnknownProperty: <biomeが@plugin構文をサポートしていなかったため> */
 @import "tailwindcss";
 
+@theme {
+	--color-red-hero: #e50914;
+	--color-silver-hero: #e3e7ee;
+	--color-ancient-hero: #3d2b5c;
+	--color-blue-hero: #4a90e2;
+}
+
 @plugin "daisyui" {
-	themes: silver, red, galaxy;
+	themes: garden, sunset;
 }
 
 /* シルバーテーマ */
-@plugin "daisyui/theme" {
+/* @plugin "daisyui/theme" {
 	name: "silver";
 	default: true;
 	prefersdark: false;
 	color-scheme: light;
 
-	--color-base-100: #e3e7ee; /* 背景 */
-	--color-base-content: #f8f9fa; /* 文字 */
+	--color-base-100: #e3e7ee; 
+	--color-base-content: #f8f9fa; 
 
-	--color-primary: #e50914; /* コンテンツ（赤） */
+	--color-primary: #e50914; 
 	--color-primary-content: #f8f9fa;
 
-	--color-secondary: #00b37a; /* アクセント（淡緑） */
+	--color-secondary: #00b37a; 
 	--color-secondary-content: #f8f9fa;
 
-	--color-accent: #d0d7e0; /* 補助シルバー */
+	--color-accent: #d0d7e0; 
 	--color-accent-content: #1e1e1e;
 
 	--color-neutral: #1e1e1e;
@@ -31,53 +38,25 @@
 	--color-success: #00b37a;
 	--color-warning: #ffd54f;
 	--color-error: #e50914;
-}
+} */
 
 /* レッドテーマ */
-@plugin "daisyui/theme" {
+/* @plugin "daisyui/theme" {
 	name: "red";
 	default: false;
 	prefersdark: false;
 	color-scheme: light;
 
-	--color-base-100: #e50914; /* 背景：赤 */
-	--color-base-content: #1e1e1e; /* 文字：黒 */
+	--color-base-100: #e50914; 
+	--color-base-content: #1e1e1e;
 
-	--color-primary: #f8f9fa; /* コンテンツ：白 */
+	--color-primary: #f8f9fa; 
 	--color-primary-content: #1e1e1e;
 
-	--color-secondary: #ffd54f; /* アクセント：黄 */
+	--color-secondary: #ffd54f; 
 	--color-secondary-content: #1e1e1e;
 
-	--color-accent: #e50914;
-	--color-accent-content: #f8f9fa;
-
-	--color-neutral: #1e1e1e;
-	--color-neutral-content: #f8f9fa;
-
-	--color-info: #42a5f5;
-	--color-success: #00b37a;
-	--color-warning: #ffd54f;
-	--color-error: #e50914;
-}
-
-/* ギャラクシーテーマ */
-@plugin "daisyui/theme" {
-	name: "galaxy";
-	default: false;
-	prefersdark: true;
-	color-scheme: dark;
-
-	--color-base-100: #3d2b5c; /* 背景：紫 */
-	--color-base-content: #f8f9fa; /* 文字：白 */
-
-	--color-primary: #e50914; /* コンテンツ：赤 */
-	--color-primary-content: #f8f9fa;
-
-	--color-secondary: #7e57c2; /* アクセント：紫深め */
-	--color-secondary-content: #f8f9fa;
-
-	--color-accent: #d0d7e0; /* 補助シルバー */
+	--color-accent: #d0d7e0;
 	--color-accent-content: #1e1e1e;
 
 	--color-neutral: #1e1e1e;
@@ -87,4 +66,32 @@
 	--color-success: #00b37a;
 	--color-warning: #ffd54f;
 	--color-error: #e50914;
-}
+} */
+
+/* ギャラクシーテーマ */
+/* @plugin "daisyui/theme" {
+	name: "ancient";
+	default: false;
+	prefersdark: false;
+	color-scheme: dark;
+
+	--color-base-100: #3d2b5c; 
+	--color-base-content: #f8f9fa;
+
+	--color-primary: #e50914; 
+	--color-primary-content: #f8f9fa;
+
+	--color-secondary: #7e57c2; 
+	--color-secondary-content: #f8f9fa;
+
+	--color-accent: #d0d7e0; 
+	--color-accent-content: #1e1e1e;
+
+	--color-neutral: #1e1e1e;
+	--color-neutral-content: #f8f9fa;
+
+	--color-info: #42a5f5;
+	--color-success: #00b37a;
+	--color-warning: #ffd54f;
+	--color-error: #e50914;
+} */
