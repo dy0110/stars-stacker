@@ -1,12 +1,12 @@
 import {
 	ExternalLink,
-	Palette,
 	RefreshCw,
 	Sparkle,
 	SquarePen,
 	TrendingUp,
 	Users,
 } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export const meta = () => {
 	return [
@@ -16,6 +16,8 @@ export const meta = () => {
 };
 
 export default function Home() {
+	const navigate = useNavigate();
+
 	return (
 		<div className="container mx-auto px-4 py-12">
 			<div className="mx-auto">
@@ -28,14 +30,31 @@ export default function Home() {
 					<p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
 						UCG盤面管理ツール
 					</p>
-					<button type="button" className="btn btn-primary btn-wide">
-						<SquarePen className="size-5" />
-						開始
-					</button>
+					<div className="flex items-center justify-center gap-4 mb-4">
+						<button
+							type="button"
+							className="btn btn-primary"
+							onClick={() => navigate("/board")}
+						>
+							<SquarePen className="size-5" />
+							開始
+						</button>
+						<button
+							type="button"
+							className="btn btn-primary btn-outline"
+							onClick={() => navigate("/terms")}
+						>
+							<ExternalLink className="size-5" />
+							利用規約
+						</button>
+					</div>
+					<p className="text-xs text-gray-600 dark:text-gray-400">
+						※本アプリの利用を開始することで利用規約に同意したものとみなします
+					</p>
 				</div>
 
 				{/* Features */}
-				<div className="grid md:grid-cols-4 gap-4 mb-12">
+				<div className="grid md:grid-cols-3 gap-4 mb-12">
 					<div className="card shadow-sm">
 						<div className="pt-6 card-body">
 							<Users className="w-12 h-12 text-blue-hero mb-4 mx-auto" />
@@ -66,7 +85,7 @@ export default function Home() {
 						</div>
 					</div>
 
-					<div className="card shadow-sm">
+					{/* <div className="card shadow-sm">
 						<div className="pt-6 card-body">
 							<Palette className="w-12 h-12 text-slate-400 mb-4 mx-auto" />
 							<h3 className="text-center mb-2">カラー・テーマ</h3>
@@ -74,14 +93,7 @@ export default function Home() {
 								設定ドロワーから3つのヒーローテーマ（レッド、シルバー、エンジェント）を選択でき、アクセシブルなカラー設定も可能です。
 							</p>
 						</div>
-					</div>
-				</div>
-
-				<div className="flex justify-center gap-4">
-					<button type="button" className="btn btn-link btn-secondary ">
-						<ExternalLink className="size-5" />
-						利用規約
-					</button>
+					</div> */}
 				</div>
 			</div>
 		</div>
