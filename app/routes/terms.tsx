@@ -1,5 +1,6 @@
 import { MoveLeft } from "lucide-react";
 import { useNavigate } from "react-router";
+import { $path } from "safe-routes";
 
 export const meta = () => {
 	return [
@@ -16,7 +17,7 @@ export default function Term() {
 				<button
 					type="button"
 					className="btn btn-ghost"
-					onClick={() => navigate("/")}
+					onClick={() => navigate($path("/"))}
 				>
 					<MoveLeft className="size-5" />
 					ホームに戻る

@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 
 export default function Layout() {
 	return (
-		<main className="h-screen w-screen" data-theme="garden">
+		<div className="h-screen w-screen" data-theme="garden">
 			<header className="px-4 ">
 				<div className="flex flex-row-reverse ">
 					<button
@@ -15,6 +15,6 @@ export default function Layout() {
 				</div>
 			</header>
 			<Outlet />
-		</main>
+		</div>
 	);
 }

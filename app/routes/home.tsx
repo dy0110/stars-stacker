@@ -7,6 +7,7 @@ import {
 	Users,
 } from "lucide-react";
 import { useNavigate } from "react-router";
+import { $path } from "safe-routes";
 
 export const meta = () => {
 	return [
@@ -34,7 +35,7 @@ export default function Home() {
 						<button
 							type="button"
 							className="btn btn-primary"
-							onClick={() => navigate("/board")}
+							onClick={() => navigate($path("/board"))}
 						>
 							<SquarePen className="size-5" />
 							開始
@@ -42,7 +43,7 @@ export default function Home() {
 						<button
 							type="button"
 							className="btn btn-primary btn-outline"
-							onClick={() => navigate("/terms")}
+							onClick={() => navigate($path("/terms"))}
 						>
 							<ExternalLink className="size-5" />
 							利用規約
