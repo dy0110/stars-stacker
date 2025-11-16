@@ -12,95 +12,11 @@
 	themes: garden, sunset;
 }
 
-/* シルバーテーマ */
-/* @plugin "daisyui/theme" {
-	name: "silver";
-	default: true;
-	prefersdark: false;
-	color-scheme: light;
-
-	--color-base-100: #e3e7ee; 
-	--color-base-content: #f8f9fa; 
-
-	--color-primary: #e50914; 
-	--color-primary-content: #f8f9fa;
-
-	--color-secondary: #00b37a; 
-	--color-secondary-content: #f8f9fa;
-
-	--color-accent: #d0d7e0; 
-	--color-accent-content: #1e1e1e;
-
-	--color-neutral: #1e1e1e;
-	--color-neutral-content: #f8f9fa;
-
-	--color-info: #42a5f5;
-	--color-success: #00b37a;
-	--color-warning: #ffd54f;
-	--color-error: #e50914;
-} */
-
-/* レッドテーマ */
-/* @plugin "daisyui/theme" {
-	name: "red";
-	default: false;
-	prefersdark: false;
-	color-scheme: light;
-
-	--color-base-100: #e50914; 
-	--color-base-content: #1e1e1e;
-
-	--color-primary: #f8f9fa; 
-	--color-primary-content: #1e1e1e;
-
-	--color-secondary: #ffd54f; 
-	--color-secondary-content: #1e1e1e;
-
-	--color-accent: #d0d7e0;
-	--color-accent-content: #1e1e1e;
-
-	--color-neutral: #1e1e1e;
-	--color-neutral-content: #f8f9fa;
-
-	--color-info: #42a5f5;
-	--color-success: #00b37a;
-	--color-warning: #ffd54f;
-	--color-error: #e50914;
-} */
-
-/* ギャラクシーテーマ */
-/* @plugin "daisyui/theme" {
-	name: "ancient";
-	default: false;
-	prefersdark: false;
-	color-scheme: dark;
-
-	--color-base-100: #3d2b5c; 
-	--color-base-content: #f8f9fa;
-
-	--color-primary: #e50914; 
-	--color-primary-content: #f8f9fa;
-
-	--color-secondary: #7e57c2; 
-	--color-secondary-content: #f8f9fa;
-
-	--color-accent: #d0d7e0; 
-	--color-accent-content: #1e1e1e;
-
-	--color-neutral: #1e1e1e;
-	--color-neutral-content: #f8f9fa;
-
-	--color-info: #42a5f5;
-	--color-success: #00b37a;
-	--color-warning: #ffd54f;
-	--color-error: #e50914;
-} */
-
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }

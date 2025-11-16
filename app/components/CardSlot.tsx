@@ -1,15 +1,27 @@
 import { ArrowUpDown } from "lucide-react";
+import { useRef } from "react";
+import { useOutsideClick } from "~/hooks/useOutsideClick";
+import { BattlePointModal } from "./BattlePointModal";
 
 type Props = {
 	position: "top" | "bottom";
 };
 
 export function CardSlot({ position }: Props) {
+	const modalRef = useRef<HTMLDialogElement>(null);
+	useOutsideClick(modalRef, () => {
+		modalRef.current?.close();
+	});
+
 	return (
 		<div className="flex flex-col gap-1">
 			{position === "top" && (
 				<div className="tooltip" data-tip="BPの操作">
-					<button type="button" className="btn btn-primary btn-block">
+					<button
+						type="button"
+						className="btn btn-primary btn-block"
+						onClick={() => modalRef.current?.showModal()}
+					>
 						<ArrowUpDown />
 					</button>
 				</div>
@@ -49,11 +61,17 @@ export function CardSlot({ position }: Props) {
 
 			{position === "bottom" && (
 				<div className="tooltip tooltip-bottom " data-tip="BPの操作">
-					<button type="button" className="btn btn-primary btn-block">
+					<button
+						type="button"
+						className="btn btn-primary btn-block"
+						onClick={() => modalRef.current?.showModal()}
+					>
 						<ArrowUpDown />
 					</button>
 				</div>
 			)}
+
+			<BattlePointModal ref={modalRef} />
 		</div>
 	);
 }

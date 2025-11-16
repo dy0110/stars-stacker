@@ -15,11 +15,11 @@ export default function Board() {
 				<p className="text-lg">後攻</p>
 			</div>
 			<div className="flex gap-2 p-4 w-full">
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="top" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="top" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="top" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="top" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="top" />
+				<CardSlot position="top" />
+				<CardSlot position="top" />
+				<CardSlot position="top" />
+				<CardSlot position="top" />
+				<CardSlot position="top" />
 			</div>
 			<div className="flex justify-between items-center gap-2 px-4 w-full">
 				<div className="tooltip tooltip-right" data-tip="先攻/後攻の交代">
@@ -35,11 +35,11 @@ export default function Board() {
 				</div>
 			</div>
 			<div className="flex gap-2 p-4 w-full">
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="bottom" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="bottom" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="bottom" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="bottom" />
-				<CardSlot bgColor="bg-white" cardColor="bg-red-400" position="bottom" />
+				<CardSlot position="bottom" />
+				<CardSlot position="bottom" />
+				<CardSlot position="bottom" />
+				<CardSlot position="bottom" />
+				<CardSlot position="bottom" />
 			</div>
 			<div className="flex items-center">
 				<p className="text-lg">先攻</p>
