@@ -1,6 +1,5 @@
 import { ArrowUpDown } from "lucide-react";
 import { useRef } from "react";
-import { useOutsideClick } from "~/hooks/useOutsideClick";
 import { BattlePointModal } from "./BattlePointModal";
 
 type Props = {
@@ -9,10 +8,6 @@ type Props = {
 
 export function CardSlot({ position }: Props) {
 	const modalRef = useRef<HTMLDialogElement>(null);
-	useOutsideClick(modalRef, () => {
-		modalRef.current?.close();
-	});
-
 	return (
 		<div className="flex flex-col gap-1">
 			{position === "top" && (
@@ -28,7 +23,7 @@ export function CardSlot({ position }: Props) {
 			)}
 
 			<div
-				className={`w-24 sm:w-32 md:w-40 lg:w-48 aspect-2/3 rounded-lg shadow-sm relative bg-base-300`}
+				className={`w-16 sm:w-20 md:w-24 lg:w-32 aspect-2/3 rounded-lg shadow-sm relative bg-base-300`}
 			>
 				{/* BP Controls - only show on hover */}
 				{/* <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center gap-1 bg-black/10 rounded-lg"> */}

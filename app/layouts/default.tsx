@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 export default function Layout() {
 	return (
 		<div className="h-screen w-screen" data-theme="garden">
-			<header className="px-4 ">
+			<header className="px-4 py-2">
 				<div className="flex flex-row-reverse ">
 					<button
 						type="button"

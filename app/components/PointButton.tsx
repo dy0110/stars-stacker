@@ -1,12 +1,13 @@
 import { Minus, Plus, ShieldAlert } from "lucide-react";
 import { useMemo } from "react";
 
-type Props = {
+export type Props = {
 	type: "up" | "down" | "extra";
 	text: string;
+	onClick?: () => void;
 };
 
-export function PointBadge({ type, text }: Props) {
+export function PointButton({ type, text, onClick }: Props) {
 	const IconSwitcher = useMemo(() => {
 		switch (type) {
 			case "down":
@@ -23,16 +24,16 @@ export function PointBadge({ type, text }: Props) {
 		}
 	}, [type]);
 
-	const BadgeSwitcher = useMemo(() => {
+	const ColorSwitcher = useMemo(() => {
 		switch (type) {
 			case "down":
-				return "badge-info";
+				return "btn-info";
 
 			case "up":
-				return "badge-error";
+				return "btn-error";
 
 			case "extra":
-				return "badge-success";
+				return "btn-success";
 
 			default:
 				return "";
@@ -40,9 +41,13 @@ export function PointBadge({ type, text }: Props) {
 	}, [type]);
 
 	return (
-		<div className={`badge badge-outline ${BadgeSwitcher}`}>
+		<button
+			type="button"
+			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline`}
+			onClick={onClick}
+		>
 			{IconSwitcher}
 			{text}
-		</div>
+		</button>
 	);
 }
