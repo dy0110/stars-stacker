@@ -1,13 +1,17 @@
 import type { RefObject } from "react";
 import { PointButton, type Props as PointButtonProps } from "./PointButton";
 
-const Points: {
+export const Points: {
 	type: PointButtonProps["type"];
 	text: PointButtonProps["text"];
 }[] = [
 	{
 		type: "up",
 		text: "BP Up",
+	},
+	{
+		type: "down",
+		text: "BP Down",
 	},
 	{
 		type: "up",
@@ -20,10 +24,6 @@ const Points: {
 	{
 		type: "up",
 		text: "BP 300",
-	},
-	{
-		type: "down",
-		text: "BP Down",
 	},
 	{
 		type: "down",

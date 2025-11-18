@@ -1,4 +1,4 @@
-import { Minus, Plus, ShieldAlert } from "lucide-react";
+import { AlertTriangle, Minus, Plus } from "lucide-react";
 import { useMemo } from "react";
 
 export type Props = {
@@ -11,13 +11,13 @@ export function PointButton({ type, text, onClick }: Props) {
 	const IconSwitcher = useMemo(() => {
 		switch (type) {
 			case "down":
-				return <Minus className="size-3" />;
+				return <Minus className="size-2" />;
 
 			case "up":
-				return <Plus className="size-3" />;
+				return <Plus className="size-2" />;
 
 			case "extra":
-				return <ShieldAlert className="size-3" />;
+				return <AlertTriangle className="size-2" />;
 
 			default:
 				return <div />;
@@ -43,7 +43,7 @@ export function PointButton({ type, text, onClick }: Props) {
 	return (
 		<button
 			type="button"
-			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline`}
+			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline text-[8px]`}
 			onClick={onClick}
 		>
 			{IconSwitcher}

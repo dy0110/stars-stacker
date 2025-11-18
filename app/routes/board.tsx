@@ -26,7 +26,7 @@ export default function Board() {
 			<div className="flex gap-2 px-4 w-full">
 				{player.cards.map((card, index) => (
 					// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
-					<CardSlot key={index} position="top" />
+					<CardSlot content={card} key={index} index={index} position="top" />
 				))}
 			</div>
 			<div className="flex justify-between items-center gap-2 px-4 py-1 w-full">
@@ -50,8 +50,13 @@ export default function Board() {
 			</div>
 			<div className="flex gap-2 px-4 w-full">
 				{opponent.cards.map((card, index) => (
-					// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
-					<CardSlot key={index} position="bottom" />
+					<CardSlot
+						content={card}
+						// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
+						key={index}
+						index={index}
+						position="bottom"
+					/>
 				))}
 			</div>
 			<div className="flex items-center">
