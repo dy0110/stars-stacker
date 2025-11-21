@@ -27,13 +27,13 @@ export function PointButton({ type, text, onClick }: Props) {
 	const ColorSwitcher = useMemo(() => {
 		switch (type) {
 			case "down":
-				return "btn-info";
+				return "border-[#4a90e2] text-[#4a90e2] active:bg-[#4a90e2] active:text-white";
 
 			case "up":
-				return "btn-error";
+				return "border-[#e50914] text-[#e50914] active:bg-[#e50914] active:text-white";
 
 			case "extra":
-				return "btn-success";
+				return "btn-success active:text-white";
 
 			default:
 				return "";

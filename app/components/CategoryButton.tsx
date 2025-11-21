@@ -1,6 +1,6 @@
-import { Circle, Triangle } from "lucide-react";
 import { useMemo } from "react";
 import type { Category } from "~/constant/point";
+import { useCategoryItem } from "~/hooks/useCategoryItem";
 
 export type Props = {
 	type: Category["type"];
@@ -9,54 +9,32 @@ export type Props = {
 };
 
 export function CategoryButton({ type, text, onClick }: Props) {
-	const IconSwitcher = useMemo(() => {
-		switch (type) {
-			case "BASIC":
-			case "POWER":
-			case "SPEED":
-			case "ARMED":
-				return <Circle className="size-2" />;
-
-			case "HAZARD":
-			case "DEVASTATION":
-			case "INVASION":
-			case "METEO":
-				return <Triangle className="size-2" />;
-
-			default:
-				return <div />;
-		}
-	}, [type]);
+	const { IconSwitcher } = useCategoryItem();
 
 	const ColorSwitcher = useMemo(() => {
 		switch (type) {
 			case "BASIC":
-				return "";
+				return "active:text-white";
 
 			case "SPEED":
-				return "btn-info";
+				return "btn-info active:text-white";
 
 			case "POWER":
-				return "btn-error";
+				return "btn-error active:text-white";
 
 			case "ARMED":
-				return "btn-success";
+				return "btn-success active:text-white";
 
 			case "HAZARD":
 			case "DEVASTATION":
 			case "INVASION":
 			case "METEO":
-				return "btn-accent";
+				return "btn-accent active:text-white";
 
 			default:
 				return "";
 		}
 	}, [type]);
-
-	// const text = useMemo(
-	// 	() => Categories.find((category) => category.type === type)?.text,
-	// 	[type],
-	// );
 
 	return (
 		<button
@@ -64,7 +42,7 @@ export function CategoryButton({ type, text, onClick }: Props) {
 			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline text-[8px]`}
 			onClick={onClick}
 		>
-			{IconSwitcher}
+			{IconSwitcher(type)}
 			{text}
 		</button>
 	);

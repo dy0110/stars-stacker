@@ -23,10 +23,16 @@ export default function Board() {
 					{!isFirst ? "先攻" : "後攻"}
 				</p>
 			</div>
-			<div className="flex gap-2 px-4 w-full">
-				{player.cards.map((card, index) => (
-					// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
-					<CardSlot content={card} key={index} index={index} position="top" />
+			<div className="flex gap-4 px-4 w-full">
+				{player.map(({ points, category }, index) => (
+					<CardSlot
+						content={points}
+						category={category}
+						// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
+						key={index}
+						index={index}
+						position="top"
+					/>
 				))}
 			</div>
 			<div className="flex justify-between items-center gap-2 px-4 py-1 w-full">
@@ -48,10 +54,11 @@ export default function Board() {
 					</button>
 				</div>
 			</div>
-			<div className="flex gap-2 px-4 w-full">
-				{opponent.cards.map((card, index) => (
+			<div className="flex gap-4 px-4 w-full">
+				{opponent.map(({ points, category }, index) => (
 					<CardSlot
-						content={card}
+						content={points}
+						category={category}
 						// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
 						key={index}
 						index={index}

@@ -1,10 +1,13 @@
 import { map } from "nanostores";
 import type { BoredState } from "./type";
 
-export const $opponent = map<BoredState>({
-	cards: [
-		[{ type: null, point: null }],
-		[{ type: null, point: null }],
-		[{ type: null, point: null }],
-	],
-});
+const initialItem: BoredState[number] = {
+	points: [{ type: null, point: null }],
+	category: null,
+};
+
+export const $opponent = map<BoredState>([
+	initialItem,
+	initialItem,
+	initialItem,
+]);
