@@ -5,7 +5,7 @@ import { useCategoryItem } from "~/hooks/useCategoryItem";
 export type Props = {
 	type: Category["type"];
 	text: string;
-	onClick?: () => void;
+	onClick?: (type: Category["type"], text: string) => void;
 };
 
 export function CategoryButton({ type, text, onClick }: Props) {
@@ -40,7 +40,9 @@ export function CategoryButton({ type, text, onClick }: Props) {
 		<button
 			type="button"
 			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline text-[8px]`}
-			onClick={onClick}
+			onClick={() => {
+				onClick?.(type, text);
+			}}
 		>
 			{IconSwitcher(type)}
 			{text}

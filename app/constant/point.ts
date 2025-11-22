@@ -70,15 +70,15 @@ export const Categories: Category[] = [
 ];
 
 export const Points: {
-	type: NonNullable<CardContent[number]["type"]>;
+	type: NonNullable<CardContent[number]["type"]> | "bp_up" | "bp_down";
 	text: string;
 }[] = [
 	{
-		type: "up",
+		type: "bp_up",
 		text: "BP Up",
 	},
 	{
-		type: "down",
+		type: "bp_down",
 		text: "BP Down",
 	},
 	{

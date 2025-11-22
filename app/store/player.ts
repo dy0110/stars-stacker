@@ -1,9 +1,9 @@
 import { map } from "nanostores";
+import { initialItem } from "~/constant/bored";
 import type { BoredState } from "./type";
 
-const initialItem: BoredState[number] = {
-	points: [{ type: null, point: null }],
-	category: null,
-};
-
-export const $player = map<BoredState>([initialItem, initialItem, initialItem]);
+export const $player = map<BoredState>([
+	{ ...initialItem, points: [...initialItem.points], effect: null },
+	{ ...initialItem, points: [...initialItem.points], effect: null },
+	{ ...initialItem, points: [...initialItem.points], effect: null },
+]);

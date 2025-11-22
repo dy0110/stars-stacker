@@ -10,9 +10,25 @@ type Props = {
 	position: "top" | "bottom";
 	index: number;
 	category: Category | null;
+	onClickPoint?: (
+		type: "up" | "down" | "extra" | "bp_up" | "bp_down",
+		text: string,
+	) => void;
+	onClickCategory?: (category: Category) => void;
+	effect: "bp_up" | "bp_down" | null;
+	onReset?: () => void;
 };
 
-export function CardSlot({ position, content, index, category }: Props) {
+export function CardSlot({
+	position,
+	content,
+	index,
+	category,
+	onClickPoint,
+	onClickCategory,
+	effect,
+	onReset,
+}: Props) {
 	const mergePoint = useMemo(() => {
 		if (!content) {
 			return { point: 0, type: null };
@@ -28,7 +44,8 @@ export function CardSlot({ position, content, index, category }: Props) {
 					acc.hasExtra = true;
 				}
 
-				const pointValue = Number(item.point);
+				const pointMatch = item.point.match(/\d+/);
+				const pointValue = pointMatch ? Number(pointMatch[0]) : 0;
 				if (Number.isNaN(pointValue)) {
 					return acc;
 				}
@@ -53,6 +70,16 @@ export function CardSlot({ position, content, index, category }: Props) {
 			: { point: result.point, type: "down" };
 	}, [content]);
 
+	const borderStyle = useMemo(() => {
+		if (effect === "bp_up") {
+			return "border-2 border-[#e50914]";
+		}
+		if (effect === "bp_down") {
+			return "border-2 border-[#4a90e2]";
+		}
+		return "";
+	}, [effect]);
+
 	return (
 		<div className="flex flex-col gap-1">
 			{position === "top" && (
@@ -60,11 +87,12 @@ export function CardSlot({ position, content, index, category }: Props) {
 					mergePoint={mergePoint}
 					position={position}
 					category={category}
+					onReset={onReset}
 				/>
 			)}
 
 			<div
-				className={`overflow-x-auto min-w-30 w-30 sm:min-w-32 md:min-w-36 lg:min-w-40 sm:w-32 md:w-36 lg:w-40 aspect-2/3 rounded-lg shadow-sm bg-base-300 `}
+				className={`overflow-x-auto min-w-30 w-30 sm:min-w-32 md:min-w-36 lg:min-w-40 sm:w-32 md:w-36 lg:w-40 aspect-2/3 rounded-lg shadow-sm bg-base-300 ${borderStyle}`}
 			>
 				<div
 					className={`tabs tabs-box h-full ${position === "bottom" ? "tabs-bottom" : "tabs-top"} tabs-xs sm:tabs-xs md:tabs-sm lg:tabs-md`}
@@ -84,6 +112,7 @@ export function CardSlot({ position, content, index, category }: Props) {
 								<PointButton
 									key={`${point.text}_${index}_${pointIndex}`}
 									{...point}
+									onClick={onClickPoint}
 								/>
 							))}
 						</div>
@@ -103,6 +132,7 @@ export function CardSlot({ position, content, index, category }: Props) {
 								<CategoryButton
 									key={`${category.text}_${index}_${categoryIndex}`}
 									{...category}
+									onClick={() => onClickCategory?.(category)}
 								/>
 							))}
 						</div>
@@ -115,6 +145,7 @@ export function CardSlot({ position, content, index, category }: Props) {
 					mergePoint={mergePoint}
 					position={position}
 					category={category}
+					onReset={onReset}
 				/>
 			)}
 		</div>

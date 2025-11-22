@@ -8,6 +8,7 @@ export type CardContent = {
 export type BoredState = {
 	points: CardContent;
 	category: Category | null;
+	effect: "bp_up" | "bp_down" | null;
 }[];
 
 export type Mode = "light" | "dark";

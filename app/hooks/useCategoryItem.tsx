@@ -1,5 +1,5 @@
 import { Circle, Triangle } from "lucide-react";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 export function useCategoryItem() {
 	const IconSwitcher = useCallback((type: string | null) => {

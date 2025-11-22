@@ -10,9 +10,10 @@ type Props = {
 		point: number;
 		type: string | null;
 	};
+	onReset?: () => void;
 };
 
-export function CardStatus({ category, position, mergePoint }: Props) {
+export function CardStatus({ category, position, mergePoint, onReset }: Props) {
 	const { IconSwitcher } = useCategoryItem();
 	const categoryColorSwitcher = useMemo(() => {
 		switch (category?.type) {
@@ -76,7 +77,11 @@ export function CardStatus({ category, position, mergePoint }: Props) {
 				className="tooltip tooltip-bottom absolute top-0 right-0"
 				data-tip="カードの状態をリフレッシュ"
 			>
-				<button type="button" className="btn btn-circle size-5 btn-ghost ">
+				<button
+					type="button"
+					className="btn btn-circle size-5 btn-ghost "
+					onClick={onReset}
+				>
 					<RefreshCcw className="size-2" />
 				</button>
 			</div>
