@@ -8,9 +8,10 @@ export type Props = {
 		type: "up" | "down" | "extra" | "bp_up" | "bp_down",
 		text: string,
 	) => void;
+	count?: number;
 };
 
-export function PointButton({ type, text, onClick }: Props) {
+export function PointButton({ type, text, onClick, count }: Props) {
 	const IconSwitcher = useMemo(() => {
 		switch (type) {
 			case "down":
@@ -50,13 +51,18 @@ export function PointButton({ type, text, onClick }: Props) {
 	return (
 		<button
 			type="button"
-			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline text-[8px]`}
+			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline text-[8px] relative`}
 			onClick={() => {
 				onClick?.(type, text);
 			}}
 		>
 			{IconSwitcher}
 			{text}
+			{count && count > 0 ? (
+				<div className="badge badge-sm badge-neutral absolute -top-2 -right-2 size-4 p-0 text-[8px]">
+					{count}
+				</div>
+			) : null}
 		</button>
 	);
 }

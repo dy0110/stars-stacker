@@ -5,7 +5,7 @@ import { useCategoryItem } from "~/hooks/useCategoryItem";
 
 type Props = {
 	position: "top" | "bottom";
-	category: Category | null;
+	categories: Category[];
 	mergePoint: {
 		point: number;
 		type: string | null;
@@ -13,32 +13,13 @@ type Props = {
 	onReset?: () => void;
 };
 
-export function CardStatus({ category, position, mergePoint, onReset }: Props) {
+export function CardStatus({
+	categories,
+	position,
+	mergePoint,
+	onReset,
+}: Props) {
 	const { IconSwitcher } = useCategoryItem();
-	const categoryColorSwitcher = useMemo(() => {
-		switch (category?.type) {
-			case "BASIC":
-				return "";
-
-			case "SPEED":
-				return "badge-info";
-
-			case "POWER":
-				return "badge-error";
-
-			case "ARMED":
-				return "badge-success";
-
-			case "HAZARD":
-			case "DEVASTATION":
-			case "INVASION":
-			case "METEO":
-				return "badge-accent";
-
-			default:
-				return "";
-		}
-	}, [category]);
 
 	const pontColorSwitcher = useMemo(() => {
 		switch (mergePoint.type) {
@@ -58,21 +39,48 @@ export function CardStatus({ category, position, mergePoint, onReset }: Props) {
 
 	return (
 		<div
-			className={`${position === "bottom" ? "" : "rotate-180"} py-1 border border-base-300 w-full rounded-lg flex items-center justify-center gap-1 relative h-8`}
+			className={`${position === "bottom" ? "" : "rotate-180"} py-1 border border-base-300 w-full rounded-lg flex flex-wrap items-center justify-center gap-1 relative min-h-8 h-auto`}
 		>
 			{mergePoint.point !== 0 ? (
 				<div className={`badge ${pontColorSwitcher} badge-outline badge-sm`}>
+					{mergePoint.point > 0 ? "+" : ""}
 					{mergePoint.point}
 				</div>
 			) : null}
-			{category !== null ? (
-				<div
-					className={`badge ${categoryColorSwitcher} badge-outline badge-sm`}
-				>
-					{IconSwitcher(category.type)}
-					{category.text}
-				</div>
-			) : null}
+			{categories.map((category, index) => {
+				let badgeColor = "";
+				switch (category.type) {
+					case "BASIC":
+						badgeColor = "";
+						break;
+					case "SPEED":
+						badgeColor = "badge-info";
+						break;
+					case "POWER":
+						badgeColor = "badge-error";
+						break;
+					case "ARMED":
+						badgeColor = "badge-success";
+						break;
+					case "HAZARD":
+					case "DEVASTATION":
+					case "INVASION":
+					case "METEO":
+						badgeColor = "badge-accent";
+						break;
+				}
+
+				return (
+					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={index}
+						className={`badge ${badgeColor} badge-outline badge-sm`}
+					>
+						{IconSwitcher(category.type)}
+						{category.text}
+					</div>
+				);
+			})}
 			<div
 				className="tooltip tooltip-bottom absolute top-0 right-0"
 				data-tip="カードの状態をリフレッシュ"
@@ -82,7 +90,7 @@ export function CardStatus({ category, position, mergePoint, onReset }: Props) {
 					className="btn btn-circle size-5 btn-ghost "
 					onClick={onReset}
 				>
-					<RefreshCcw className="size-2" />
+					<RefreshCcw className="size-4" />
 				</button>
 			</div>
 		</div>

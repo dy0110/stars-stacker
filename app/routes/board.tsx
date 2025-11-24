@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { Plus, Repeat2 } from "lucide-react";
+import { Plus, Repeat2, RotateCcw } from "lucide-react";
 import { useCallback, useState } from "react";
 import { initialItem } from "~/constant/bored";
 import { $opponent } from "~/store/opponent";
@@ -36,14 +36,14 @@ export default function Board() {
 			<div className="flex flex-col justify-center items-center min-w-full w-fit px-24 h-full">
 				<div className="flex items-center">
 					<p className="text-lg text-neutral rotate-180">
-						{!isFirst ? "先攻（相手）" : "後攻（相手）"}
+						{!isFirst ? "先攻" : "後攻"}
 					</p>
 				</div>
 				<div className="flex gap-4 px-4 w-full">
 					{opponent.map((item, index) => (
 						<CardSlot
 							content={item.points}
-							category={item.category}
+							categories={item.categories}
 							// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
 							key={index}
 							index={index}
@@ -70,6 +70,14 @@ export default function Board() {
 										if (itemIndex !== index) {
 											return pItem;
 										}
+
+										if (
+											type === "extra" &&
+											pItem.points.some((p) => p.type === "extra")
+										) {
+											return pItem;
+										}
+
 										return {
 											...pItem,
 											points: [
@@ -88,9 +96,16 @@ export default function Board() {
 										if (itemIndex !== index) {
 											return pItem;
 										}
+										const isExist = pItem.categories.some(
+											(c) => c.type === category.type,
+										);
 										return {
 											...pItem,
-											category,
+											categories: isExist
+												? pItem.categories.filter(
+														(c) => c.type !== category.type,
+													)
+												: [...pItem.categories, category],
 										};
 									}),
 								);
@@ -104,6 +119,7 @@ export default function Board() {
 										return {
 											...initialItem,
 											points: [...initialItem.points],
+											categories: [],
 										};
 									}),
 								);
@@ -136,12 +152,41 @@ export default function Board() {
 							<Plus className="size-4" />
 						</button>
 					</div>
+					<div className="tooltip tooltip-left" data-tip="盤面リセット">
+						<button
+							type="button"
+							className="btn btn-circle btn-error btn-sm"
+							onClick={() => {
+								const resetState = () => [
+									{
+										...initialItem,
+										points: [...initialItem.points],
+										categories: [],
+									},
+									{
+										...initialItem,
+										points: [...initialItem.points],
+										categories: [],
+									},
+									{
+										...initialItem,
+										points: [...initialItem.points],
+										categories: [],
+									},
+								];
+								$player.set(resetState());
+								$opponent.set(resetState());
+							}}
+						>
+							<RotateCcw className="size-4" />
+						</button>
+					</div>
 				</div>
 				<div className="flex gap-4 px-4 w-full">
 					{player.map((item, index) => (
 						<CardSlot
 							content={item.points}
-							category={item.category}
+							categories={item.categories}
 							// biome-ignore lint/suspicious/noArrayIndexKey: <index使うしかない>
 							key={index}
 							index={index}
@@ -168,6 +213,14 @@ export default function Board() {
 										if (itemIndex !== index) {
 											return pItem;
 										}
+
+										if (
+											type === "extra" &&
+											pItem.points.some((p) => p.type === "extra")
+										) {
+											return pItem;
+										}
+
 										return {
 											...pItem,
 											points: [
@@ -186,9 +239,16 @@ export default function Board() {
 										if (itemIndex !== index) {
 											return pItem;
 										}
+										const isExist = pItem.categories.some(
+											(c) => c.type === category.type,
+										);
 										return {
 											...pItem,
-											category,
+											categories: isExist
+												? pItem.categories.filter(
+														(c) => c.type !== category.type,
+													)
+												: [...pItem.categories, category],
 										};
 									}),
 								);
@@ -202,6 +262,7 @@ export default function Board() {
 										return {
 											...initialItem,
 											points: [...initialItem.points],
+											categories: [],
 										};
 									}),
 								);
@@ -210,9 +271,7 @@ export default function Board() {
 					))}
 				</div>
 				<div className="flex items-center">
-					<p className="text-lg text-neutral">
-						{isFirst ? "先攻（自分）" : "後攻（自分）"}
-					</p>
+					<p className="text-lg text-neutral">{isFirst ? "先攻" : "後攻"}</p>
 				</div>
 			</div>
 		</div>

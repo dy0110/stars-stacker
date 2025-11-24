@@ -83,27 +83,27 @@ export const Points: {
 	},
 	{
 		type: "up",
-		text: "BP 100",
+		text: "BP 1000",
 	},
 	{
 		type: "up",
-		text: "BP 200",
+		text: "BP 2000",
 	},
 	{
 		type: "up",
-		text: "BP 300",
+		text: "BP 3000",
 	},
 	{
 		type: "down",
-		text: "BP 100",
+		text: "BP 1000",
 	},
 	{
 		type: "down",
-		text: "BP 200",
+		text: "BP 2000",
 	},
 	{
 		type: "down",
-		text: "BP 300",
+		text: "BP 3000",
 	},
 	{
 		type: "extra",
