@@ -2,6 +2,7 @@ import { useStore } from "@nanostores/react";
 import { Plus, Repeat2, RotateCcw } from "lucide-react";
 import { useCallback, useState } from "react";
 import { initialItem } from "~/constant/bored";
+import { $mode } from "~/store/mode";
 import { $opponent } from "~/store/opponent";
 import { $player } from "~/store/player";
 import type { BoredState } from "~/store/type";
@@ -31,11 +32,15 @@ export default function Board() {
 		return [...resetItems, newItem];
 	}, []);
 
+	const mode = useStore($mode);
+
 	return (
 		<div className="overflow-x-auto no-scrollbar h-[calc(100%-56px)] w-full">
 			<div className="flex flex-col justify-center items-center min-w-full w-fit px-24 h-full">
 				<div className="flex items-center">
-					<p className="text-lg text-neutral rotate-180">
+					<p
+						className={`text-lg rotate-180 ${mode === "dark" ? "text-white" : "text-neutral"}`}
+					>
 						{!isFirst ? "先攻" : "後攻"}
 					</p>
 				</div>
@@ -271,7 +276,11 @@ export default function Board() {
 					))}
 				</div>
 				<div className="flex items-center">
-					<p className="text-lg text-neutral">{isFirst ? "先攻" : "後攻"}</p>
+					<p
+						className={`text-lg ${mode === "dark" ? "text-white" : "text-neutral"}`}
+					>
+						{isFirst ? "先攻" : "後攻"}
+					</p>
 				</div>
 			</div>
 		</div>

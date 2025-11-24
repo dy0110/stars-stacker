@@ -1,7 +1,9 @@
+import { useStore } from "@nanostores/react";
 import { RefreshCcw } from "lucide-react";
 import { useMemo } from "react";
 import type { Category } from "~/constant/point";
 import { useCategoryItem } from "~/hooks/useCategoryItem";
+import { $mode } from "~/store/mode";
 
 type Props = {
 	position: "top" | "bottom";
@@ -20,6 +22,7 @@ export function CardStatus({
 	onReset,
 }: Props) {
 	const { IconSwitcher } = useCategoryItem();
+	const mode = useStore($mode);
 
 	const pontColorSwitcher = useMemo(() => {
 		switch (mergePoint.type) {
@@ -39,7 +42,7 @@ export function CardStatus({
 
 	return (
 		<div
-			className={`${position === "bottom" ? "" : "rotate-180"} py-1 border border-base-300 w-full rounded-lg flex flex-wrap items-center justify-center gap-1 relative min-h-8 h-auto`}
+			className={`${position === "bottom" ? "" : "rotate-180"} py-1 border border-base-300 w-full rounded-lg flex flex-wrap items-center justify-center gap-1 relative min-h-8 h-auto ${mode === "dark" ? "bg-base-300" : ""}`}
 		>
 			{mergePoint.point !== 0 ? (
 				<div className={`badge ${pontColorSwitcher} badge-outline badge-sm`}>
