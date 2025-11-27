@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import { Categories, type Category, Points } from "~/constant/point";
+import { Theme } from "~/constant/theme";
 import type { CardContent } from "~/store/type";
+import { calculateCardPoints } from "~/utils/card";
 import { CardStatus } from "./CardStatus";
 import { CategoryButton } from "./CategoryButton";
 import { PointButton } from "./PointButton";
@@ -30,55 +32,18 @@ export function CardSlot({
 	onReset,
 }: Props) {
 	const mergePoint = useMemo(() => {
-		if (!content) {
-			return { point: 0, type: null };
-		}
-
-		const result = content.reduce(
-			(acc, item) => {
-				if (!item.point) {
-					return acc;
-				}
-
-				if (item.type === "extra") {
-					acc.hasExtra = true;
-				}
-
-				const pointMatch = item.point.match(/\d+/);
-				const pointValue = pointMatch ? Number(pointMatch[0]) : 0;
-				if (Number.isNaN(pointValue)) {
-					return acc;
-				}
-
-				if (item.type === "up") {
-					acc.point += pointValue;
-				} else if (item.type === "down") {
-					acc.point -= pointValue;
-				}
-
-				return acc;
-			},
-			{ point: 0, hasExtra: false },
-		);
-
-		if (result.hasExtra) {
-			return { point: result.point, type: "extra" };
-		}
-
-		return result.point > 0
-			? { point: result.point, type: "up" }
-			: { point: result.point, type: "down" };
+		return calculateCardPoints(content);
 	}, [content]);
 
 	const borderStyle = useMemo(() => {
 		if (effect === "bp_up") {
-			return "border-2 border-[#e50914]";
+			return `border-2 ${Theme.border.bpUp}`;
 		}
 		if (effect === "bp_down") {
-			return "border-2 border-[#4a90e2]";
+			return `border-2 ${Theme.border.bpDown}`;
 		}
 		if (mergePoint.type === "extra") {
-			return "border-2 border-success";
+			return `border-2 ${Theme.border.extra}`;
 		}
 		return "";
 	}, [effect, mergePoint.type]);
