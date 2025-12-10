@@ -114,7 +114,8 @@ export default function Term() {
 								お問い合わせ
 							</p>
 							<p className="text-sm text-gray-600 dark:text-gray-400">
-								本サービスに関するお問い合わせは、GitHubのIssueよりお願いいたします。
+								本サービスに関するお問い合わせは、dyoshida57.dev@gmail.com
+								までお願いいたします。
 							</p>
 						</div>
 					</div>
