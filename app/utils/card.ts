@@ -36,6 +36,10 @@ export function calculateCardPoints(content: CardContent) {
 		return { point: result.point, type: "extra" as const, hasExtra: true };
 	}
 
+	if (result.point === 0) {
+		return { point: 0, type: null, hasExtra: false };
+	}
+
 	return result.point > 0
 		? { point: result.point, type: "up" as const, hasExtra: false }
 		: { point: result.point, type: "down" as const, hasExtra: false };
