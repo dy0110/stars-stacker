@@ -19,7 +19,7 @@ export default function Layout() {
 
 	return (
 		<div
-			className="h-screen w-screen absolute"
+			className="w-screen absolute"
 			data-theme={mode === "light" ? "garden" : "sunset"}
 		>
 			<div className="absolute top-2 right-2 z-10 flex items-center gap-2">

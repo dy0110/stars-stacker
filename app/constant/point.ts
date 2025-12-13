@@ -51,22 +51,23 @@ export const Categories: Category[] = [
 		type: "ARMED",
 		text: "武装",
 	},
-	{
-		type: "HAZARD",
-		text: "災禍",
-	},
-	{
-		type: "DEVASTATION",
-		text: "壊滅",
-	},
-	{
-		type: "INVASION",
-		text: "侵略",
-	},
-	{
-		type: "METEO",
-		text: "メテオ",
-	},
+	// NOTE 怪獣に属性付与できるカードが出たらコメントは外す
+	// {
+	// 	type: "HAZARD",
+	// 	text: "災禍",
+	// },
+	// {
+	// 	type: "DEVASTATION",
+	// 	text: "壊滅",
+	// },
+	// {
+	// 	type: "INVASION",
+	// 	text: "侵略",
+	// },
+	// {
+	// 	type: "METEO",
+	// 	text: "メテオ",
+	// },
 ];
 
 export const Points: {
@@ -75,11 +76,11 @@ export const Points: {
 }[] = [
 	{
 		type: "bp_up",
-		text: "BP Up",
+		text: "Grade Up",
 	},
 	{
 		type: "bp_down",
-		text: "BP Down",
+		text: "Grade Down",
 	},
 	{
 		type: "up",

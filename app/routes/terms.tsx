@@ -109,12 +109,10 @@ export default function Term() {
 							変更後の規約は、本アプリ内に表示した時点で効力を生じ、ユーザーが本アプリを継続利用した場合、その変更後の規約に同意したものとみなします。
 						</p>
 
-						<div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded">
-							<p className="text-sm mb-2 text-gray-600 dark:text-gray-400">
-								お問い合わせ
-							</p>
-							<p className="text-sm text-gray-600 dark:text-gray-400">
-								本サービスに関するお問い合わせは、dyoshida57.dev@gmail.com
+						<div className="mt-8 p-4 bg-gray-100 rounded">
+							<p className="text-sm mb-2 text-gray-600">お問い合わせ</p>
+							<p className="text-sm text-gray-600 ">
+								本サービスに関するお問い合わせやバグ報告は、dyoshida57.dev@gmail.com
 								までお願いいたします。
 							</p>
 						</div>

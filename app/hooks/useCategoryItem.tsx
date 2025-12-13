@@ -8,13 +8,13 @@ export function useCategoryItem() {
 			case "POWER":
 			case "SPEED":
 			case "ARMED":
-				return <Circle className="size-2" />;
+				return <Circle className="size-3" />;
 
 			case "HAZARD":
 			case "DEVASTATION":
 			case "INVASION":
 			case "METEO":
-				return <Triangle className="size-2" />;
+				return <Triangle className="size-3" />;
 
 			default:
 				return "";

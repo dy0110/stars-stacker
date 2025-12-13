@@ -37,13 +37,13 @@ export function CardSlot({
 
 	const borderStyle = useMemo(() => {
 		if (effect === "bp_up") {
-			return `border-2 ${Theme.border.bpUp}`;
+			return `ring-2 ${Theme.border.bpUp}`;
 		}
 		if (effect === "bp_down") {
-			return `border-2 ${Theme.border.bpDown}`;
+			return `ring-2 ${Theme.border.bpDown}`;
 		}
 		if (mergePoint.type === "extra") {
-			return `border-2 ${Theme.border.extra}`;
+			return `ring-2 ${Theme.border.extra}`;
 		}
 		return "";
 	}, [effect, mergePoint.type]);
@@ -74,18 +74,49 @@ export function CardSlot({
 					/>
 					<div className="tab-content bg-base-100 border-base-300 p-0.5">
 						<div
-							className={`flex items-center justify-center-safe h-full flex-wrap gap-1 overflow-y-scroll ${position === "bottom" ? "" : "rotate-180"}`}
+							className={`flex items-center justify-center h-full flex-wrap gap-1 overflow-y-scroll ${position === "bottom" ? "" : "rotate-180"}`}
 						>
-							{Points.map((point, pointIndex) => {
+							{Points.filter((p) => ["up", "down"].includes(p.type)).map(
+								(point, pointIndex) => {
+									const count = content?.filter(
+										(c) => c.type === point.type && c.point === point.text,
+									).length;
+									return (
+										<PointButton
+											key={`${point.text}_${index}_${pointIndex}_bp`}
+											{...point}
+											onClick={onClickPoint}
+											count={count}
+										/>
+									);
+								},
+							)}
+						</div>
+					</div>
+
+					<input
+						type="radio"
+						name={`tab_slot_${position}_${index}`}
+						className={`tab ${position === "bottom" ? "" : "after:rotate-180"}`}
+						aria-label="Grade"
+					/>
+					<div className="tab-content bg-base-100 border-base-300 p-0.5">
+						<div
+							className={`flex items-center justify-center h-full flex-wrap gap-1 overflow-y-scroll ${position === "bottom" ? "" : "rotate-180"}`}
+						>
+							{Points.filter((p) =>
+								["bp_up", "bp_down", "extra"].includes(p.type),
+							).map((point, pointIndex) => {
 								const count = content?.filter(
 									(c) => c.type === point.type && c.point === point.text,
 								).length;
 								return (
 									<PointButton
-										key={`${point.text}_${index}_${pointIndex}`}
+										key={`${point.text}_${index}_${pointIndex}_grade`}
 										{...point}
 										onClick={onClickPoint}
 										count={count}
+										size="btn-sm"
 									/>
 								);
 							})}

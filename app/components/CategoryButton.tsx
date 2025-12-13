@@ -39,7 +39,7 @@ export function CategoryButton({ type, text, onClick }: Props) {
 	return (
 		<button
 			type="button"
-			className={`btn btn-xs rounded-full ${ColorSwitcher} btn-outline text-[8px]`}
+			className={`btn btn-sm rounded-full ${ColorSwitcher} btn-outline`}
 			onClick={() => {
 				onClick?.(type, text);
 			}}

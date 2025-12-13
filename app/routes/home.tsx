@@ -12,7 +12,7 @@ import { $path } from "safe-routes";
 export const meta = () => {
 	return [
 		{ title: "Stars Stacker" },
-		{ name: "description", content: "Welcome to Stars Stacker" },
+		{ name: "description", content: "ホームのページ" },
 	];
 };
 
