@@ -1,7 +1,6 @@
 import {
 	ExternalLink,
 	RefreshCw,
-	Sparkle,
 	SquarePen,
 	TrendingUp,
 	Users,
@@ -25,9 +24,15 @@ export default function Home() {
 				{/* Hero Section */}
 				<div className="text-center mb-12">
 					<div className="flex justify-center mb-6">
-						<Sparkle className="w-24 h-24 text-primary" />
+						<img
+							src="/icon.svg"
+							alt="Stars Stacker Logo"
+							className="h-40 w-auto drop-shadow-xl"
+						/>
 					</div>
-					<h1 className="text-5xl mb-4">Stars Stacker</h1>
+					<h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
+						Stars Stacker
+					</h1>
 					<p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
 						UCG盤面管理ツール
 					</p>
