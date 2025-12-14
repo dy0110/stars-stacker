@@ -26,6 +26,10 @@ export const links: Route.LinksFunction = () => [
 		href: "/icon.svg",
 		type: "image/svg+xml",
 	},
+	{
+		rel: "apple-touch-icon",
+		href: "/apple-touch-icon.png",
+	},
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
