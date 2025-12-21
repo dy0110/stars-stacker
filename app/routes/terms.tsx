@@ -26,7 +26,7 @@ export default function Term() {
 				<div className="card shadow mt-4 overflow-auto h-[760px]">
 					<div className="card-body ">
 						<h1 className="text-lg bold">Stars Stacker 利用規約</h1>
-						<p className="text-sm">最終更新日: 2025年11月16日</p>
+						<p className="text-sm">最終更新日: 2025年12月21日</p>
 						<p>
 							本利用規約（以下、「本規約」）は、本サービス（ウルトラマンカードゲームの盤面管理ツール。以下、「本サービス」）の利用条件を定めるものです。
 							本サービスを利用した時点で、本規約に同意したものとみなします。
