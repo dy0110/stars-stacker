@@ -30,7 +30,7 @@ export default function Home() {
 							className="h-40 w-auto drop-shadow-xl"
 						/>
 					</div>
-					<h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
+					<h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-base-content to-base-content/60">
 						Stars Stacker
 					</h1>
 					<p className="text-xl text-gray-600 dark:text-gray-400 mb-8">

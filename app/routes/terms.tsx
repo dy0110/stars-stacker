@@ -112,7 +112,8 @@ export default function Term() {
 						<div className="mt-8 p-4 bg-gray-100 rounded">
 							<p className="text-sm mb-2 text-gray-600">お問い合わせ</p>
 							<p className="text-sm text-gray-600 ">
-								本サービスに関するお問い合わせやバグ報告は、dyoshida57.dev@gmail.com
+								本サービスに関するお問い合わせやバグ報告は、X(旧Twitter)アカウント
+								@Daichi67216UCG へのDM、または dyoshida57.dev@gmail.com
 								までお願いいたします。
 							</p>
 						</div>
