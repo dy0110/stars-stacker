@@ -2,11 +2,12 @@ import { useStore } from "@nanostores/react";
 import { useMediaQuery } from "@react-hookz/web";
 import { Moon, Sun } from "lucide-react";
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useLocation, useNavigate } from "react-router";
 import { $path } from "safe-routes";
 import { $mode } from "~/store/mode";
 
 export default function Layout() {
+	const location = useLocation();
 	const mode = useStore($mode);
 	const navigate = useNavigate();
 	const isDarkOS = useMediaQuery("(prefers-color-scheme: dark)");
@@ -23,13 +24,15 @@ export default function Layout() {
 			data-theme={mode === "light" ? "garden" : "sunset"}
 		>
 			<div className="absolute top-2 right-2 z-10 flex items-center gap-2">
-				<button
-					type="button"
-					className="btn btn-link"
-					onClick={() => navigate($path("/"))}
-				>
-					トップに戻る
-				</button>
+				{location.pathname === `${$path("/board")}` ? (
+					<button
+						type="button"
+						className="btn btn-link"
+						onClick={() => navigate($path("/"))}
+					>
+						トップに戻る
+					</button>
+				) : null}
 				<label className="flex cursor-pointer gap-2 items-center">
 					<Sun className="w-4 h-4" />
 					<input
