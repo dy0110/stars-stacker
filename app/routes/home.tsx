@@ -12,6 +12,11 @@ export const meta = () => {
 	return [
 		{ title: "Stars Stacker" },
 		{ name: "description", content: "ホームのページ" },
+		{ property: "og:image", content: "/og-image.png" },
+		{ property: "og:title", content: "Stars Stacker" },
+		{ property: "og:description", content: "UCG盤面管理ツール" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:image", content: "/og-image.png" },
 	];
 };
 
@@ -122,6 +127,12 @@ export default function Home() {
 											<br />
 											軽微なバグを修正しました
 										</div>
+									</div>
+								</li>
+								<li className="step step-primary" data-content="●">
+									<div className="text-left">
+										<div className="font-bold">2025/12/25</div>
+										<div className="text-sm">OGP画像を設置しました</div>
 									</div>
 								</li>
 							</ul>
