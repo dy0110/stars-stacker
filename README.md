@@ -1,87 +1,58 @@
-# Welcome to React Router!
+# Stars Stacker
 
-A modern, production-ready template for building full-stack React applications using React Router.
+![License](https://img.shields.io/github/license/dy0110/stars-stacker)
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwind-css)
+![DaisyUI](https://img.shields.io/badge/DaisyUI-5-5A0EF8?logo=daisyui)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+UCG盤面管理ツール
 
-## Features
+![Stars Stacker Screenshot](public/screenshot.png)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## 機能
 
-## Getting Started
+- **ラウンド管理**: ラウンドごとにカード枠が自動的に追加されます。画面右側の「追加」ボタンで新しいラウンドを開始できます。
+- **BP操作**: BPの上げ下げ、グレードアップ、グレードダウンなど、BPの変化を記録できます。
+- **先行/後攻切替**: 中央の「先行」または「後攻」ボタンで、自分と相手の順番を切り替えられます。
 
-### Installation
+## 技術スタック
 
-Install the dependencies:
+- **フレームワーク**: React 19, React Router 7
+- **言語**: TypeScript
+- **スタイリング**: Tailwind CSS 4, DaisyUI 5
+- **ビルドツール**: Vite
+- **PWA**: vite-plugin-pwa
+
+## 始め方
+
+### インストール
+
+依存関係をインストールします：
 
 ```bash
 npm install
 ```
 
-### Development
+### 開発
 
-Start the development server with HMR:
+開発サーバーを起動します：
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+アプリケーションは `http://localhost:5173` で利用可能になります。
 
-## Building for Production
+### 本番ビルド
 
-Create a production build:
+本番用ビルドを作成します：
 
 ```bash
 npm run build
 ```
 
-## Deployment
+## ライセンス
 
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+このプロジェクトは MPL-2.0 ライセンスの下で公開されています。
