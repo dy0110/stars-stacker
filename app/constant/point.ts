@@ -32,6 +32,10 @@ export type Category =
 	| {
 			type: "METEO";
 			text: "メテオ";
+	  }
+	| {
+			type: "LEVEL_10";
+			text: "+10LV";
 	  };
 
 export const Categories: Category[] = [
@@ -70,6 +74,12 @@ export const Categories: Category[] = [
 	// },
 ];
 
+export const Levels: Category[] = [
+	{
+		type: "LEVEL_10",
+		text: "+10LV",
+	},
+];
 export const Points: {
 	type: NonNullable<CardContent[number]["type"]> | "bp_up" | "bp_down";
 	text: string;

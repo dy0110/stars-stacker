@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import {
 	Categories,
 	type Category,
+	Levels,
 	Points,
 	ZettonPoints,
 } from "~/constant/point";
@@ -37,7 +38,7 @@ export function CardSlot({
 	onReset,
 }: Props) {
 	const [activeTab, setActiveTab] = useState<
-		"BP" | "Grade" | "属性" | "ゼットン"
+		"BP" | "Grade" | "属性" | "レベル" | "ゼットン"
 	>("BP");
 
 	const mergePoint = useMemo(() => {
@@ -74,23 +75,25 @@ export function CardSlot({
 				<div
 					className={`flex overflow-x-auto no-scrollbar w-full ${position === "bottom" ? "order-last" : ""}`}
 				>
-					{(["BP", "Grade", "属性", "ゼットン"] as const).map((tabName) => (
-						<button
-							key={tabName}
-							type="button"
-							className={`tab flex-1 whitespace-nowrap min-w-max px-2 py-1 text-xs font-semibold
+					{(["BP", "Grade", "属性", "レベル", "ゼットン"] as const).map(
+						(tabName) => (
+							<button
+								key={tabName}
+								type="button"
+								className={`tab flex-1 whitespace-nowrap min-w-max px-2 py-1 text-xs font-semibold
 								${activeTab === tabName ? "bg-base-100 opacity-100" : "opacity-60 hover:opacity-100"}
 								${position === "bottom" ? "rounded-b-none" : "rounded-t-none"}
 								${position === "bottom" && activeTab !== tabName ? "border-t border-base-300" : ""}
 								${position === "top" && activeTab !== tabName ? "border-b border-base-300" : ""}
 							`}
-							onClick={() => setActiveTab(tabName)}
-						>
-							<div className={`${position === "bottom" ? "" : "rotate-180"}`}>
-								{tabName}
-							</div>
-						</button>
-					))}
+								onClick={() => setActiveTab(tabName)}
+							>
+								<div className={`${position === "bottom" ? "" : "rotate-180"}`}>
+									{tabName}
+								</div>
+							</button>
+						),
+					)}
 				</div>
 
 				<div className="flex-1 bg-base-100 p-0.5 relative overflow-hidden">
@@ -138,6 +141,15 @@ export function CardSlot({
 									key={`${category.text}_${index}_${categoryIndex}`}
 									{...category}
 									onClick={() => onClickCategory?.(category)}
+								/>
+							))}
+
+						{activeTab === "レベル" &&
+							Levels.map((level, levelIndex) => (
+								<CategoryButton
+									key={`${level.text}_${index}_${levelIndex}`}
+									{...level}
+									onClick={() => onClickCategory?.(level)}
 								/>
 							))}
 
