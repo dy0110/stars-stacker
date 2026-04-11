@@ -1,7 +1,7 @@
 import type { Category } from "~/constant/point";
 
 export type CardContent = {
-	type: "up" | "down" | "extra" | null;
+	type: "up" | "down" | "extra" | "zetton" | null;
 	point: string | null;
 }[];
 

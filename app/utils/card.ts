@@ -5,6 +5,14 @@ export function calculateCardPoints(content: CardContent) {
 		return { point: 0, type: null, hasExtra: false };
 	}
 
+	const hasZetton = content.find((item) => item.type === "zetton");
+
+	if (hasZetton) {
+		const pointMatch = hasZetton.point?.match(/\d+/);
+		const pointValue = pointMatch ? Number(pointMatch[0]) : 0;
+		return { point: pointValue, type: "zetton" as const, hasExtra: false };
+	}
+
 	const result = content.reduce(
 		(acc, item) => {
 			if (!item.point) {

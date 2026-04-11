@@ -35,6 +35,9 @@ export function CardStatus({
 			case "extra":
 				return "badge-success ";
 
+			case "zetton":
+				return "badge-warning ";
+
 			default:
 				return "";
 		}
@@ -45,8 +48,10 @@ export function CardStatus({
 			className={`${position === "bottom" ? "" : "rotate-180"} py-1 border border-base-300 w-full rounded-lg flex flex-wrap items-center justify-center gap-1 relative min-h-8 h-auto ${mode === "dark" ? "bg-base-300" : ""}`}
 		>
 			{mergePoint.point !== 0 ? (
-				<div className={`badge ${pontColorSwitcher} badge-outline badge-sm`}>
-					{mergePoint.point > 0 ? "+" : ""}
+				<div
+					className={`badge ${pontColorSwitcher} ${mergePoint.type === "zetton" && mode !== "dark" ? "text-[white] border-transparent" : "badge-outline"} badge-sm`}
+				>
+					{mergePoint.type === "up" && mergePoint.point > 0 ? "+" : ""}
 					{mergePoint.point}
 				</div>
 			) : null}
