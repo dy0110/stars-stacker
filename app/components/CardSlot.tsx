@@ -1,5 +1,10 @@
-import { useMemo } from "react";
-import { Categories, type Category, Points } from "~/constant/point";
+import { useMemo, useState } from "react";
+import {
+	Categories,
+	type Category,
+	Points,
+	ZettonPoints,
+} from "~/constant/point";
 import { Theme } from "~/constant/theme";
 import type { CardContent } from "~/store/type";
 import { calculateCardPoints } from "~/utils/card";
@@ -13,7 +18,7 @@ type Props = {
 	index: number;
 	categories: Category[];
 	onClickPoint?: (
-		type: "up" | "down" | "extra" | "bp_up" | "bp_down",
+		type: "up" | "down" | "extra" | "bp_up" | "bp_down" | "zetton",
 		text: string,
 	) => void;
 	onClickCategory?: (category: Category) => void;
@@ -31,6 +36,10 @@ export function CardSlot({
 	effect,
 	onReset,
 }: Props) {
+	const [activeTab, setActiveTab] = useState<
+		"BP" | "Grade" | "属性" | "ゼットン"
+	>("BP");
+
 	const mergePoint = useMemo(() => {
 		return calculateCardPoints(content);
 	}, [content]);
@@ -60,23 +69,36 @@ export function CardSlot({
 			)}
 
 			<div
-				className={`overflow-x-auto w-full aspect-2/3 rounded-lg shadow-sm bg-base-300 ${borderStyle}`}
+				className={`flex flex-col w-full aspect-2/3 rounded-lg shadow-sm bg-base-300 ${borderStyle} overflow-hidden`}
 			>
 				<div
-					className={`tabs tabs-box h-full ${position === "bottom" ? "tabs-bottom" : "tabs-top"} tabs-xs sm:tabs-xs md:tabs-sm lg:tabs-md`}
+					className={`flex overflow-x-auto no-scrollbar w-full ${position === "bottom" ? "order-last" : ""}`}
 				>
-					<input
-						type="radio"
-						name={`tab_slot_${position}_${index}`}
-						className={`tab ${position === "bottom" ? "" : "after:rotate-180"}`}
-						aria-label="BP"
-						defaultChecked
-					/>
-					<div className="tab-content bg-base-100 border-base-300 p-0.5">
-						<div
-							className={`flex items-center justify-center h-full flex-wrap gap-1 overflow-y-scroll ${position === "bottom" ? "" : "rotate-180"}`}
+					{(["BP", "Grade", "属性", "ゼットン"] as const).map((tabName) => (
+						<button
+							key={tabName}
+							type="button"
+							className={`tab flex-1 whitespace-nowrap min-w-max px-2 py-1 text-xs font-semibold
+								${activeTab === tabName ? "bg-base-100 opacity-100" : "opacity-60 hover:opacity-100"}
+								${position === "bottom" ? "rounded-b-none" : "rounded-t-none"}
+								${position === "bottom" && activeTab !== tabName ? "border-t border-base-300" : ""}
+								${position === "top" && activeTab !== tabName ? "border-b border-base-300" : ""}
+							`}
+							onClick={() => setActiveTab(tabName)}
 						>
-							{Points.filter((p) => ["up", "down"].includes(p.type)).map(
+							<div className={`${position === "bottom" ? "" : "rotate-180"}`}>
+								{tabName}
+							</div>
+						</button>
+					))}
+				</div>
+
+				<div className="flex-1 bg-base-100 p-0.5 relative overflow-hidden">
+					<div
+						className={`flex items-center justify-center h-full w-full flex-wrap gap-1 overflow-y-scroll absolute inset-0 p-1 ${position === "bottom" ? "" : "rotate-180"}`}
+					>
+						{activeTab === "BP" &&
+							Points.filter((p) => ["up", "down"].includes(p.type)).map(
 								(point, pointIndex) => {
 									const count = content?.filter(
 										(c) => c.type === point.type && c.point === point.text,
@@ -91,20 +113,9 @@ export function CardSlot({
 									);
 								},
 							)}
-						</div>
-					</div>
 
-					<input
-						type="radio"
-						name={`tab_slot_${position}_${index}`}
-						className={`tab ${position === "bottom" ? "" : "after:rotate-180"}`}
-						aria-label="Grade"
-					/>
-					<div className="tab-content bg-base-100 border-base-300 p-0.5">
-						<div
-							className={`flex items-center justify-center h-full flex-wrap gap-1 overflow-y-scroll ${position === "bottom" ? "" : "rotate-180"}`}
-						>
-							{Points.filter((p) =>
+						{activeTab === "Grade" &&
+							Points.filter((p) =>
 								["bp_up", "bp_down", "extra"].includes(p.type),
 							).map((point, pointIndex) => {
 								const count = content?.filter(
@@ -120,27 +131,30 @@ export function CardSlot({
 									/>
 								);
 							})}
-						</div>
-					</div>
 
-					<input
-						type="radio"
-						name={`tab_slot_${position}_${index}`}
-						className={`tab ${position === "bottom" ? "" : "after:rotate-180"}`}
-						aria-label="属性"
-					/>
-					<div className="tab-content bg-base-100 border-base-300 p-1">
-						<div
-							className={`flex items-center justify-center-safe h-full flex-wrap gap-1 overflow-y-scroll ${position === "bottom" ? "" : "rotate-180"}`}
-						>
-							{Categories.map((category, categoryIndex) => (
+						{activeTab === "属性" &&
+							Categories.map((category, categoryIndex) => (
 								<CategoryButton
 									key={`${category.text}_${index}_${categoryIndex}`}
 									{...category}
 									onClick={() => onClickCategory?.(category)}
 								/>
 							))}
-						</div>
+
+						{activeTab === "ゼットン" &&
+							ZettonPoints.map((point, pointIndex) => {
+								const count = content?.filter(
+									(c) => c.type === point.type && c.point === point.text,
+								).length;
+								return (
+									<PointButton
+										key={`${point.text}_${index}_${pointIndex}_zetton`}
+										{...point}
+										onClick={onClickPoint}
+										count={count}
+									/>
+								);
+							})}
 					</div>
 				</div>
 			</div>

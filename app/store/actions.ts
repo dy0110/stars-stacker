@@ -25,7 +25,7 @@ export function updateCardEffect(
 export function updateCardPoint(
 	store: WritableAtom<BoredState>,
 	index: number,
-	type: "up" | "down" | "extra",
+	type: "up" | "down" | "extra" | "zetton",
 	text: string,
 ) {
 	const currentState = store.get();
@@ -37,6 +37,28 @@ export function updateCardPoint(
 
 			if (type === "extra" && item.points.some((p) => p.type === "extra")) {
 				return item;
+			}
+
+			if (type === "zetton") {
+				const isSame = item.points.some(
+					(p) => p.type === "zetton" && p.point === text,
+				);
+				const pointsWithoutZetton = item.points.filter(
+					(p) => p.type !== "zetton" && (p.type !== null || p.point !== null),
+				);
+				if (isSame) {
+					return {
+						...item,
+						points:
+							pointsWithoutZetton.length > 0
+								? pointsWithoutZetton
+								: [{ type: null, point: null }],
+					};
+				}
+				return {
+					...item,
+					points: [...pointsWithoutZetton, { type, point: text }],
+				};
 			}
 
 			return {

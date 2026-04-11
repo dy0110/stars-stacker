@@ -111,3 +111,22 @@ export const Points: {
 		text: "Extra BP",
 	},
 ];
+
+export const ZettonPoints: {
+	type: "zetton";
+	text: string;
+}[] = [
+	{ type: "zetton", text: "BP 0" },
+	{ type: "zetton", text: "BP 1000" },
+	{ type: "zetton", text: "BP 5000" },
+	{ type: "zetton", text: "BP 6000" },
+	{ type: "zetton", text: "BP 7000" },
+	{ type: "zetton", text: "BP 8000" },
+	{ type: "zetton", text: "BP 9000" },
+	{ type: "zetton", text: "BP 11000" },
+	{ type: "zetton", text: "BP 12000" },
+	{ type: "zetton", text: "BP 13000" },
+	{ type: "zetton", text: "BP 14000" },
+	{ type: "zetton", text: "BP 16000" },
+	{ type: "zetton", text: "BP 20000" },
+];
