@@ -31,6 +31,9 @@ export function CategoryButton({ type, text, onClick }: Props) {
 			case "METEO":
 				return "btn-accent active:text-white";
 
+			case "LEVEL_10":
+				return "btn-primary active:text-white";
+
 			default:
 				return "";
 		}
