@@ -4,7 +4,7 @@ export function UpdateHistory() {
 			<h2 className="text-3xl font-bold text-center mb-8">更新履歴</h2>
 			<div className="card bg-base-100 shadow-sm border border-base-200">
 				<div className="card-body p-4 sm:p-6">
-					<div className="max-h-60 overflow-y-auto px-2">
+					<div className="max-h-48 overflow-y-auto px-2">
 						<ul className="steps steps-vertical w-full">
 							<li className="step step-primary" data-content="●">
 								<div className="text-left">
