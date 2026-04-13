@@ -31,6 +31,9 @@ export function CategoryButton({ type, text, onClick }: Props) {
 			case "METEO":
 				return "btn-accent active:text-white";
 
+			case "LEVEL_10":
+				return "text-indigo-400 border-indigo-400 hover:bg-indigo-400 hover:text-white";
+
 			default:
 				return "";
 		}

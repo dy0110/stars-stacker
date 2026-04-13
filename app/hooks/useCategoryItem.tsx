@@ -1,4 +1,4 @@
-import { Circle, Triangle } from "lucide-react";
+import { Circle, Plus, Triangle } from "lucide-react";
 import { useCallback } from "react";
 
 export function useCategoryItem() {
@@ -15,6 +15,9 @@ export function useCategoryItem() {
 			case "INVASION":
 			case "METEO":
 				return <Triangle className="size-3" />;
+
+			case "LEVEL_10":
+				return <Plus className="size-3" />;
 
 			default:
 				return "";

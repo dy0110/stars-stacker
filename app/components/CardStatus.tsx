@@ -76,11 +76,14 @@ export function CardStatus({
 					case "METEO":
 						badgeColor = "badge-accent";
 						break;
+					case "LEVEL_10":
+						badgeColor = "text-indigo-400 border-indigo-400";
+						break;
 				}
 
 				return (
 					<div
-						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						// biome-ignore lint/suspicious/noArrayIndexKey: indices are stable for this list
 						key={index}
 						className={`badge ${badgeColor} badge-outline badge-sm`}
 					>
