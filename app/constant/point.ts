@@ -35,7 +35,7 @@ export type Category =
 	  }
 	| {
 			type: "LEVEL_10";
-			text: "+10LV";
+			text: "10LV";
 	  };
 
 export const Categories: Category[] = [
@@ -77,7 +77,7 @@ export const Categories: Category[] = [
 export const Levels: Category[] = [
 	{
 		type: "LEVEL_10",
-		text: "+10LV",
+		text: "10LV",
 	},
 ];
 export const Points: {

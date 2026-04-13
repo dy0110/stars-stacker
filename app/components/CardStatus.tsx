@@ -77,7 +77,7 @@ export function CardStatus({
 						badgeColor = "badge-accent";
 						break;
 					case "LEVEL_10":
-						badgeColor = "badge-secondary";
+						badgeColor = "text-[#a5b4fc] border-[#a5b4fc]";
 						break;
 				}
 

@@ -1,4 +1,4 @@
-import { Circle, Square, Triangle } from "lucide-react";
+import { Circle, Plus, Triangle } from "lucide-react";
 import { useCallback } from "react";
 
 export function useCategoryItem() {
@@ -17,7 +17,7 @@ export function useCategoryItem() {
 				return <Triangle className="size-3" />;
 
 			case "LEVEL_10":
-				return <Square className="size-3" />;
+				return <Plus className="size-3" />;
 
 			default:
 				return "";
