@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { $path } from "safe-routes";
+import { UpdateHistory } from "~/components/UpdateHistory";
 
 export const meta = () => {
 	return [
@@ -95,50 +96,10 @@ export default function Home() {
 							</p>
 						</div>
 					</div>
-
-					{/* <div className="card shadow-sm">
-						<div className="pt-6 card-body">
-							<Palette className="w-12 h-12 text-slate-400 mb-4 mx-auto" />
-							<h3 className="text-center mb-2">カラー・テーマ</h3>
-							<p className="text-center text-sm text-gray-600 dark:text-gray-400">
-								設定ドロワーから3つのヒーローテーマ（レッド、シルバー、エンジェント）を選択でき、アクセシブルなカラー設定も可能です。
-							</p>
-						</div>
-					</div> */}
 				</div>
 
 				{/* Update History */}
-				<div className="mb-12">
-					<h2 className="text-3xl font-bold text-center mb-8">更新履歴</h2>
-					<div className="card bg-base-100 shadow-sm border border-base-200">
-						<div className="card-body max-h-80 overflow-y-auto">
-							<ul className="steps steps-vertical">
-								<li className="step step-primary" data-content="●">
-									<div className="text-left">
-										<div className="font-bold">2025/12/21</div>
-										<div className="text-sm">サービス公開しました</div>
-									</div>
-								</li>
-								<li className="step step-primary" data-content="●">
-									<div className="text-left">
-										<div className="font-bold">2025/12/24</div>
-										<div className="text-sm">
-											更新履歴を追加しました
-											<br />
-											軽微なバグを修正しました
-										</div>
-									</div>
-								</li>
-								<li className="step step-primary" data-content="●">
-									<div className="text-left">
-										<div className="font-bold">2025/12/25</div>
-										<div className="text-sm">OGP画像を設置しました</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				<UpdateHistory />
 			</div>
 		</div>
 	);
