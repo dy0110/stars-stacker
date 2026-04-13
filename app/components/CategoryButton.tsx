@@ -32,7 +32,7 @@ export function CategoryButton({ type, text, onClick }: Props) {
 				return "btn-accent active:text-white";
 
 			case "LEVEL_10":
-				return "text-[#a5b4fc] border-[#a5b4fc] hover:bg-[#a5b4fc] hover:text-white";
+				return "text-indigo-300 border-indigo-300 hover:bg-indigo-300 hover:text-white";
 
 			default:
 				return "";
